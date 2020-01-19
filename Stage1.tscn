@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://sprites/ground.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 449.318, 96.5656 )
+
+[node name="Stage1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 549.395, 445.652 )
+scale = Vector2( 0.646463, 0.646463 )
+script = ExtResource( 2 )
+
+[node name="Ground" type="Sprite" parent="."]
+position = Vector2( 478.104, 699.149 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Ground2" type="Sprite" parent="."]
+position = Vector2( 1374.17, 662.873 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground2"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Ground2/StaticBody2D"]
+position = Vector2( 3.55652, 16.5364 )
+rotation = -1.57079
+polygon = PoolVector2Array( -75.5953, 444.983, 111.796, 444.982, 89.8259, 264.052, 101.457, 134.817, 100.164, 23.6742, 48.4697, -109.438, 91.1169, -366.617, 79.4855, -453.205, -76.8896, -453.205 )
