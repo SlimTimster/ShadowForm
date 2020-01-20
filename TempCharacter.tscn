@@ -3,11 +3,10 @@
 [ext_resource path="res://TempCharacter.gd" type="Script" id=1]
 [ext_resource path="res://sprites/temporary/Adventurer Sprite Sheet v1.1.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 77.5263, 99.3383 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -23,8 +22,7 @@ tracks/0/keys = {
 "values": [ 0, 12 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "jump"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -38,26 +36,26 @@ tracks/0/keys = {
 "values": [ 13, 16 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "jump"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=3]
-states/idle/node = SubResource( 5 )
+[sub_resource type="AnimationNodeStateMachine" id=8]
+states/idle/node = SubResource( 4 )
 states/idle/position = Vector2( 217, 92 )
-states/jump/node = SubResource( 6 )
+states/jump/node = SubResource( 5 )
 states/jump/position = Vector2( 416, 92 )
-transitions = [ "idle", "jump", SubResource( 7 ), "jump", "idle", SubResource( 8 ) ]
+transitions = [ "idle", "jump", SubResource( 6 ), "jump", "idle", SubResource( 7 ) ]
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [node name="TempCharacter" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -68,18 +66,19 @@ scale = Vector2( 10, 10 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 13
-frame = 16
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 52.3451, 154.328 )
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 1 )
-anims/jump = SubResource( 2 )
+anims/idle = SubResource( 2 )
+anims/jump = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 3 )
+tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 4 )
+parameters/playback = SubResource( 9 )
