@@ -13,7 +13,6 @@ const FLOOR = Vector2(0,-1)
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
 	sprite_scale = $Sprite.scale.x
-	print_debug(state_machine)
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()

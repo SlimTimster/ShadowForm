@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -6,6 +8,7 @@ load_path = "res://.import/character_idle.png-7c76663d7795f66bec8eef5b9f8ff62a.s
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.439389, 0.439389 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
