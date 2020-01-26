@@ -32,4 +32,5 @@ func _physics_process(delta):
 	else:
 		on_ground = false
 	
+	#(already uses delta!)
 	velocity = move_and_slide(velocity, FLOOR)
