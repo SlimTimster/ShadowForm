@@ -47,6 +47,5 @@ func _physics_process(delta):
 		doublejump_available = true
 	else:
 		on_ground = false
-	
-	
+
 	velocity = move_and_slide(velocity, FLOOR)
