@@ -16,7 +16,6 @@ position = Vector2( 791.377, 844.919 )
 scale = Vector2( 0.312571, 0.312571 )
 
 [node name="Ground" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Ground00" parent="Ground" instance=ExtResource( 3 )]
 position = Vector2( 1708.59, 1006.49 )
@@ -31,7 +30,7 @@ position = Vector2( 1706.54, 745.655 )
 position = Vector2( 1441.54, 485.655 )
 
 [node name="Ground12" parent="Ground" instance=ExtResource( 3 )]
-position = Vector2( 500.439, 485.655 )
+position = Vector2( 457.004, 485.655 )
 
 [node name="Ground08" parent="Ground" instance=ExtResource( 3 )]
 position = Vector2( 611.542, 485.655 )
