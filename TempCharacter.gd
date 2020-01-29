@@ -33,7 +33,7 @@ func _physics_process(delta):
 	velocity.y += GRAVITY
 	
 	if velocity.x == 0:
-        state_machine.travel("idle")
+		state_machine.travel("idle")
 	
 	if is_on_floor():
 		on_ground = true
