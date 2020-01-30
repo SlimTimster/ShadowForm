@@ -1,6 +1,7 @@
 extends Area2D
 
 const SPEED = 1200
+const DAMAGE = 35
 
 var velocity = Vector2()
 
@@ -19,7 +20,9 @@ func set_direction(direction):
 func _on_Shadowball_body_entered(body):
 	if body.name == "Player":
 		return
-		
+	
+	if "Enemy" in body.name:
+		body.take_damage(DAMAGE)
 	queue_free()
 
 

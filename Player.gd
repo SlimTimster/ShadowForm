@@ -19,7 +19,7 @@ func _ready():
 	actual_gravity = GRAVITY
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 #------------------------- Movement ----------------------------
 	if Input.is_action_pressed("move_right"):
