@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Shadowball.gd" type="Script" id=1]
 [ext_resource path="res://sprites/projectiles/Shadowball1.png" type="Texture" id=2]
@@ -17,6 +17,39 @@ radius = 44.0114
 
 [sub_resource type="GDScript" id=3]
 
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.186806 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.17037, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.576471, 0.576471, 0.576471, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+trail_size_modifier = SubResource( 9 )
+trail_color_modifier = SubResource( 7 )
+emission_shape = 1
+emission_sphere_radius = 40.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 1.0
+scale = 8.0
+scale_curve = SubResource( 5 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+
 [node name="Shadowball" type="Area2D"]
 scale = Vector2( 0.496239, 0.496239 )
 script = ExtResource( 1 )
@@ -30,5 +63,10 @@ shape = SubResource( 2 )
 script = SubResource( 3 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 6
+visibility_rect = Rect2( -100.381, -100, 200, 200 )
+process_material = SubResource( 10 )
 [connection signal="body_entered" from="." to="." method="_on_Shadowball_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
